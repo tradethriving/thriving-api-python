@@ -41,14 +41,14 @@ git commit -m "Initial release of Thriving API Python SDK v1.0.0" || echo "Files
 
 # Create GitHub repository
 echo "🏗️  Creating GitHub repository..."
-if ! gh repo view thriving/thriving-api-python &> /dev/null; then
-    gh repo create thriving/thriving-api-python \
+if ! gh repo view tradethriving/thriving-api-python &> /dev/null; then
+    gh repo create tradethriving/thriving-api-python \
         --public \
         --description "Official Python SDK for the Thriving API - AI-powered financial analysis and trading intelligence" \
         --homepage "https://tradethriving.com"
     
     # Add remote
-    git remote add origin https://github.com/thriving/thriving-api-python.git || echo "Remote already exists"
+    git remote add origin https://github.com/tradethriving/thriving-api-python.git || echo "Remote already exists"
 else
     echo "Repository already exists"
 fi
@@ -77,7 +77,7 @@ echo "   - Production: https://pypi.org/account/register/"
 echo "   - Test: https://test.pypi.org/account/register/"
 echo ""
 echo "2. Generate API tokens and add to GitHub secrets:"
-echo "   - Go to: https://github.com/thriving/thriving-api-python/settings/secrets/actions"
+echo "   - Go to: https://github.com/tradethriving/thriving-api-python/settings/secrets/actions"
 echo "   - Add: PYPI_API_TOKEN and TEST_PYPI_API_TOKEN"
 echo ""
 echo "3. Create a release to trigger publishing:"
@@ -86,5 +86,5 @@ echo ""
 echo "4. Or test upload manually:"
 echo "   twine upload --repository testpypi dist/*"
 echo ""
-echo "📁 Repository: https://github.com/thriving/thriving-api-python"
+echo "📁 Repository: https://github.com/tradethriving/thriving-api-python"
 echo "📦 Built package files are in: ./dist/"
