@@ -42,12 +42,12 @@ class AuthenticationError(ThrivingAPIError):
 
 class RateLimitError(ThrivingAPIError):
     """Raised when API rate limits are exceeded."""
-    
+
     def __init__(
-        self, 
-        message: str = "Rate limit exceeded", 
+        self,
+        message: str = "Rate limit exceeded",
         retry_after: Optional[int] = None,
-        **kwargs
+        **kwargs: Any
     ) -> None:
         super().__init__(message, status_code=429, **kwargs)
         self.retry_after = retry_after
@@ -55,12 +55,12 @@ class RateLimitError(ThrivingAPIError):
 
 class ValidationError(ThrivingAPIError):
     """Raised when request validation fails."""
-    
+
     def __init__(
-        self, 
-        message: str = "Request validation failed", 
+        self,
+        message: str = "Request validation failed",
         validation_errors: Optional[Dict[str, Any]] = None,
-        **kwargs
+        **kwargs: Any
     ) -> None:
         super().__init__(message, status_code=400, **kwargs)
         self.validation_errors = validation_errors or {}
@@ -68,43 +68,43 @@ class ValidationError(ThrivingAPIError):
 
 class APIConnectionError(ThrivingAPIError):
     """Raised when there are connection issues with the API."""
-    
-    def __init__(self, message: str = "Failed to connect to API", **kwargs) -> None:
+
+    def __init__(self, message: str = "Failed to connect to API", **kwargs: Any) -> None:
         super().__init__(message, **kwargs)
 
 
 class ServerError(ThrivingAPIError):
     """Raised when the API returns a server error (5xx)."""
-    
-    def __init__(self, message: str = "Internal server error", **kwargs) -> None:
+
+    def __init__(self, message: str = "Internal server error", **kwargs: Any) -> None:
         super().__init__(message, **kwargs)
 
 
 class TimeoutError(ThrivingAPIError):
     """Raised when API requests timeout."""
-    
-    def __init__(self, message: str = "Request timeout", **kwargs) -> None:
+
+    def __init__(self, message: str = "Request timeout", **kwargs: Any) -> None:
         super().__init__(message, **kwargs)
 
 
 class QuotaExceededError(ThrivingAPIError):
     """Raised when API quota is exceeded."""
-    
-    def __init__(self, message: str = "API quota exceeded", **kwargs) -> None:
+
+    def __init__(self, message: str = "API quota exceeded", **kwargs: Any) -> None:
         super().__init__(message, status_code=402, **kwargs)
 
 
 class NotFoundError(ThrivingAPIError):
     """Raised when requested resource is not found."""
-    
-    def __init__(self, message: str = "Resource not found", **kwargs) -> None:
+
+    def __init__(self, message: str = "Resource not found", **kwargs: Any) -> None:
         super().__init__(message, status_code=404, **kwargs)
 
 
 class SymbolNotFoundError(NotFoundError):
     """Raised when a stock symbol is not found."""
-    
-    def __init__(self, symbol: str, **kwargs) -> None:
+
+    def __init__(self, symbol: str, **kwargs: Any) -> None:
         message = f"Symbol '{symbol}' not found"
         super().__init__(message, **kwargs)
         self.symbol = symbol
