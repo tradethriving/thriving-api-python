@@ -95,6 +95,8 @@ jobs:
           echo "Built packages:"
           ls -la dist/
           echo "Verifying version in built package:"
+          # Install package dependencies for verification
+          pip install httpx pydantic typing-extensions python-dateutil
           python -c "
           import sys
           sys.path.insert(0, 'src')
