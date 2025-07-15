@@ -337,7 +337,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Documentation**: [https://docs.tradethriving.com/api](https://docs.tradethriving.com/api)
+- **Documentation**: [https://tradethriving.com/api-documentation](https://tradethriving.com/api-documentation)
 - **API Dashboard**: [https://tradethriving.com/api-dashboard](https://tradethriving.com/api-dashboard)
 - **Email Support**: [support@tradethriving.com](mailto:support@tradethriving.com)
 - **GitHub Issues**: [Report bugs and request features](https://github.com/thriving/thriving-api-python/issues)
@@ -345,7 +345,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🔗 Links
 
 - **Homepage**: [https://tradethriving.com](https://tradethriving.com)
-- **API Documentation**: [https://ai.tradethriving.com/docs](https://ai.tradethriving.com/docs)
+- **API Documentation**: [https://tradethriving.com/api-documentation](https://tradethriving.com/api-documentation)
 - **PyPI Package**: [https://pypi.org/project/thriving-api/](https://pypi.org/project/thriving-api/)
 - **GitHub Repository**: [https://github.com/thriving/thriving-api-python](https://github.com/thriving/thriving-api-python)
 
