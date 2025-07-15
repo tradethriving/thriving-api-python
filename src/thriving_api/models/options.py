@@ -183,7 +183,7 @@ class OptionContract(BaseModel):
         return volume >= min_volume or open_interest >= min_open_interest
 
 
-class OptionsData(BaseModel, SymbolMixin):
+class OptionsData(SymbolMixin, BaseModel):
     """Options chain data container."""
     
     calls: List[OptionContract] = Field(..., description="Call option contracts")

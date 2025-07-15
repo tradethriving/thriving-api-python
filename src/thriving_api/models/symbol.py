@@ -90,7 +90,7 @@ class PerformanceResponse(BaseResponse, MetadataMixin):
         return list(self.performance.keys())
 
 
-class OHLCData(BaseModel, MarketDataMixin, TimestampMixin):
+class OHLCData(MarketDataMixin, TimestampMixin, BaseModel):
     """OHLC (Open, High, Low, Close) data point."""
     
     adj_close: Optional[PriceType] = Field(None, description="Adjusted closing price")

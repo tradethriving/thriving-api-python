@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field, validator
 from .base import BaseResponse, SymbolMixin, TimestampMixin, MetadataMixin
 
 
-class AIAnalysis(BaseModel, SymbolMixin, TimestampMixin):
+class AIAnalysis(SymbolMixin, TimestampMixin, BaseModel):
     """AI analysis data model."""
     
     action: Literal["buy", "sell", "wait"] = Field(

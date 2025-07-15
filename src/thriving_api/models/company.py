@@ -15,7 +15,7 @@ from .base import (
 )
 
 
-class CompanyFundamentals(BaseModel, SymbolMixin):
+class CompanyFundamentals(SymbolMixin, BaseModel):
     """Company fundamental data model."""
     
     # Valuation Metrics
@@ -177,7 +177,7 @@ class EarningsData(BaseModel):
         return surprise > 0 if surprise is not None else None
 
 
-class CompanyEarnings(BaseModel, SymbolMixin):
+class CompanyEarnings(SymbolMixin, BaseModel):
     """Company earnings data model."""
     
     annual_earnings: List[EarningsData] = Field(..., description="Annual earnings data")
@@ -222,7 +222,7 @@ class EarningsResponse(BaseResponse, MetadataMixin):
     earnings: CompanyEarnings = Field(..., description="Company earnings data")
 
 
-class CompanyDetails(BaseModel, SymbolMixin):
+class CompanyDetails(SymbolMixin, BaseModel):
     """Company details and profile information."""
     
     name: Optional[str] = Field(None, description="Company name")

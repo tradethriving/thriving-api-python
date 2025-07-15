@@ -15,7 +15,7 @@ from .base import (
 )
 
 
-class TechnicalDataPoint(BaseModel, TimestampMixin):
+class TechnicalDataPoint(TimestampMixin, BaseModel):
     """Base model for technical indicator data points."""
     
     value: Optional[Union[str, float]] = Field(None, description="Indicator value")
@@ -105,7 +105,7 @@ class EMAResponse(TechnicalIndicatorResponse):
             return "Neutral momentum"
 
 
-class RSIDataPoint(BaseModel, TimestampMixin):
+class RSIDataPoint(TimestampMixin, BaseModel):
     """RSI indicator data point."""
     
     rsi: Union[str, float] = Field(..., description="RSI value")
@@ -177,7 +177,7 @@ class RSIResponse(BaseResponse, MetadataMixin):
         return price_trend != rsi_trend
 
 
-class MACDDataPoint(BaseModel, TimestampMixin):
+class MACDDataPoint(TimestampMixin, BaseModel):
     """MACD indicator data point."""
     
     macd: Union[str, float] = Field(..., description="MACD line value")
@@ -254,7 +254,7 @@ class MACDResponse(BaseResponse, MetadataMixin):
         return None
 
 
-class BollingerBandsDataPoint(BaseModel, TimestampMixin):
+class BollingerBandsDataPoint(TimestampMixin, BaseModel):
     """Bollinger Bands data point."""
     
     upper_band: Union[str, float] = Field(..., description="Upper Bollinger Band")
@@ -347,7 +347,7 @@ class BollingerBandsResponse(BaseResponse, MetadataMixin):
             return "Stable volatility"
 
 
-class StochasticDataPoint(BaseModel, TimestampMixin):
+class StochasticDataPoint(TimestampMixin, BaseModel):
     """Stochastic oscillator data point."""
     
     k_percent: Union[str, float] = Field(..., description="%K value")
