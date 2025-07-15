@@ -48,16 +48,62 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Extract version from tag
+        id: get_version
+        run: |
+          # Extract version from tag (remove 'v' prefix if present)
+          VERSION=${GITHUB_REF#refs/tags/}
+          VERSION=${VERSION#v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Extracted version: $VERSION"
+
+      - name: Update version in files
+        run: |
+          VERSION=${{ steps.get_version.outputs.version }}
+          echo "Updating version to: $VERSION"
+
+          # Update pyproject.toml
+          sed -i "s/^version = .*/version = \"$VERSION\"/" pyproject.toml
+
+          # Update __init__.py
+          sed -i "s/__version__ = .*/__version__ = \"$VERSION\"/" src/thriving_api/__init__.py
+
+          # Verify changes
+          echo "Updated pyproject.toml:"
+          grep "^version = " pyproject.toml
+          echo "Updated __init__.py:"
+          grep "__version__ = " src/thriving_api/__init__.py
+
       - name: Install build dependencies
         run: |
           python -m pip install --upgrade pip
           pip install build twine
+
+      - name: Clean previous builds
+        run: |
+          rm -rf dist/ build/ *.egg-info/
+          find . -name "*.egg-info" -type d -exec rm -rf {} + || true
 
       - name: Build package
         run: python -m build
 
       - name: Check package
         run: twine check dist/*
+
+      - name: Verify built version
+        run: |
+          echo "Built packages:"
+          ls -la dist/
+          echo "Verifying version in built package:"
+          python -c "
+          import sys
+          sys.path.insert(0, 'src')
+          import thriving_api
+          print(f'Package version: {thriving_api.__version__}')
+          print(f'Expected version: ${{ steps.get_version.outputs.version }}')
+          assert thriving_api.__version__ == '${{ steps.get_version.outputs.version }}', 'Version mismatch!'
+          print('✅ Version verification passed!')
+          "
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
