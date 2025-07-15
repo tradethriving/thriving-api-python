@@ -27,7 +27,7 @@ from .exceptions import (
     APIConnectionError,
 )
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "Thriving"
 __email__ = "support@tradethriving.com"
 
