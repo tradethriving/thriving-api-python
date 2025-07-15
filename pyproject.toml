@@ -59,10 +59,10 @@ docs = [
 
 [project.urls]
 Homepage = "https://tradethriving.com"
-Documentation = "https://docs.tradethriving.com/api"
+Documentation = "https://tradethriving.com/api-documentation"
 Repository = "https://github.com/thriving/thriving-api-python"
 "Bug Tracker" = "https://github.com/thriving/thriving-api-python/issues"
-"API Documentation" = "https://ai.tradethriving.com/docs"
+"API Documentation" = "https://tradethriving.com/api-documentation"
 
 [tool.setuptools.packages.find]
 where = ["src"]
